@@ -4,3 +4,22 @@ server:
 spring:
   application:
     name: USER-SERVICE
+
+logbook:
+  include:
+    - /users/**
+    - /actuator/**
+  exclude:
+    - /actuator/health
+    - /api/admin/**
+  filter.enabled: true
+  format.style: json
+  strategy: body-only-if-status-at-least
+  minimum-status: 400
+  obfuscate:
+    headers:
+      - Authorization
+      - X-Secret
+    parameters:
+      - access_token
+      - password
