@@ -25,11 +25,11 @@ public class UserService {
 
     public UserWithDepartmentResponseTemplate getUserWithDepartment(Long userId) {
         log.info("Inside getUserWithDepartment of UserService");
-        UserWithDepartmentResponseTemplate responseTemplate =  new UserWithDepartmentResponseTemplate();
         User user = userRepository.findByUserId(userId);
-        Department department = departmentClient.getDepartment(user.getDepartmentId());
-        responseTemplate.setUser(user);
-        responseTemplate.setDepartment(department);
+        UserWithDepartmentResponseTemplate responseTemplate =  new UserWithDepartmentResponseTemplate(
+                user,
+                departmentClient.getDepartment(user.getDepartmentId())
+        );
         return responseTemplate;
     }
 }
