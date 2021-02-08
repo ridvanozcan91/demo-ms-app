@@ -10,3 +10,4 @@ spring:
         git:
           uri: https://github.com/ridvanozcan91/application-configs
           clone-on-start: true
+          skipSslValidation: true
